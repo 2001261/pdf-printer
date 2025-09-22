@@ -12,6 +12,13 @@
 !example/
 !example/*
 
+# Allow build scripts
+!*.sh
+!*.bat
+
+# Allow spec files
+!*.spec
+
 # Allow directories that contain allowed files
 !*/
 
@@ -19,11 +26,6 @@
 __pycache__/
 build/
 dist/
-
-# Explicitly ignore build scripts and specs
-*.sh
-*.bat
-*.spec
 
 # Explicitly ignore documentation files except README.md
 FILE_LIST.md
