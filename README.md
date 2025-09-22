@@ -3,6 +3,7 @@
 ## 项目概述
 
 这是一个功能完整的PDF打印和查看应用程序，基于PyQt5和PyMuPDF开发。该应用程序提供了丰富的PDF处理功能，包括查看、缩放、旋转、打印等。
+Windows环境试了很多项目和软件，没广告的没这个功能，有这个功能的有广告，或者adobe的reader自带，但是除了本软件的功能其他的我又不需要，因此过于臃肿，干脆自己写了
 
 ## 功能特性
 
@@ -81,8 +82,9 @@ pip install PyQt5 PyMuPDF
    pip install pyinstaller
    pyinstaller --noconfirm --windowed --icon=pdf_icon.ico --name=pdf_printer main.py
    ```
-注：因为pyqt依赖巨大，导致windows程序打包巨大，不建议打包为exe，直接运行脚本更轻巧
-
+注：
+1.建议建立纯净的虚拟环境后部署项目再打包，我没加排除条件，原生打包所有python库，不想打包的直接去release下载我打包好的现成的exe文件
+2.macos环境可以打包，但是本来mac上现成的pdf处理软件中带这个功能，就懒得打包测试，有需要者自行打包测试
 ### macOS
 
 1. 使用提供的shell脚本：
@@ -106,7 +108,7 @@ pip install PyQt5 PyMuPDF
 
 ### 注意事项
 
-1. 图标文件需要单独创建：
+1. 图标文件需要单独创建（我懒，没找图标）：
    
    - Windows: `pdf_icon.ico`
    - macOS: `pdf_icon.icns`
