@@ -61,6 +61,10 @@ pip install PyQt5 PyMuPDF
 
 4. 点击"打印"或"打印预览"进行打印操作
 
+## 示例截图
+
+![应用程序界面示例](example/xajpzdnj.i0m.png)
+
 ## 打包为可执行文件
 
 ### Windows

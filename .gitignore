@@ -8,6 +8,10 @@
 # Allow Python source files
 !*.py
 
+# Allow example images
+!example/
+!example/*
+
 # Allow directories that contain allowed files
 !*/
 
