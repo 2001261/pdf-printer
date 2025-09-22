@@ -81,6 +81,7 @@ pip install PyQt5 PyMuPDF
    pip install pyinstaller
    pyinstaller --noconfirm --windowed --icon=pdf_icon.ico --name=pdf_printer main.py
    ```
+注：因为pyqt依赖巨大，导致windows程序打包巨大，不建议打包为exe，直接运行脚本更轻巧
 
 ### macOS
 
