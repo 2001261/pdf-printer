@@ -1,18 +1,27 @@
-# Ignore build and distribution directories
+# Ignore all files
+*
+
+# Allow specific files
+!README.md
+!requirements.txt
+
+# Allow Python source files
+!*.py
+
+# Allow directories that contain allowed files
+!*/
+
+# Explicitly ignore build/dist directories
 __pycache__/
 build/
 dist/
 
-# Ignore build files
-*.spec
+# Explicitly ignore build scripts and specs
 *.sh
 *.bat
+*.spec
 
-# Ignore documentation files
+# Explicitly ignore documentation files except README.md
 FILE_LIST.md
 ICON_CREATION.md
 PACKAGING.md
-
-# Ignore all markdown files except README.md
-*.md
-!README.md
