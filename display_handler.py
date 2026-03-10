@@ -126,10 +126,10 @@ class DisplayHandler:
         remaining_pages = self.pdf_handler.get_page_count() - current_page
         page_count = min(self.layout_handler.pages_per_sheet, remaining_pages)
         
-        # 使用布局处理器绘制自适应页面
+        # 使用布局处理器绘制自适应页面（显示使用 96 DPI）
         self.layout_handler.draw_adaptive_pages(\
             painter, self.pdf_handler, self.scaling_handler, \
-            target_width, target_height, current_page, page_count)
+            target_width, target_height, current_page, page_count, dpi=96)
         
         # 结束绘制
         painter.end()

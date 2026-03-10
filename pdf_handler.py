@@ -38,18 +38,22 @@ class PDFHandler:
         return 0, 0
     
     def render_page(self, page_index, dpi=96):
-        """渲染页面为Pixmap，以指定DPI"""
+        """渲染页面为 Pixmap，以指定 DPI"""
         page = self.get_page(page_index)
         if page:
             # Create a matrix for the desired DPI, without applying user zoom
             zoom_factor = dpi / 72.0  # Default PDF DPI is 72
             mat = fitz.Matrix(zoom_factor, zoom_factor)
-            
+
             pix = page.get_pixmap(matrix=mat)
             img = QPixmap()
             img.loadFromData(pix.tobytes("ppm"))
             return img
         return None
+
+    def render_page_to_pixmap(self, page_index, dpi=96):
+        """渲染页面为 QPixmap，支持高 DPI（用于打印）"""
+        return self.render_page(page_index, dpi)
     
     def get_page_orientation(self, page_index):
         """获取指定页面的固有方向 ('portrait' 或 'landscape')"""

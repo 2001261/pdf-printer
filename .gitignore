@@ -31,3 +31,7 @@ dist/
 FILE_LIST.md
 ICON_CREATION.md
 PACKAGING.md
+
+# Ignore pdf-gemini directory and zip files
+pdf-gemini/
+*.zip

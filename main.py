@@ -330,39 +330,39 @@ class PDFPrinterApp(UIHandler):
         """处理打印预览的绘制请求"""
         # 配置打印机
         self.print_handler.configure_printer(printer)
-        
+
         # 开始绘制
         painter = QPainter(printer)
-        
+
         # 获取页面尺寸
         page_rect = printer.pageRect()
         target_width = page_rect.width()
         target_height = page_rect.height()
-        
+
         # 根据页面方向调整目标尺寸
         if self.pdf_handler.get_page_count() > 0:
             pdf_width, pdf_height = self.pdf_handler.get_page_size(0)
             target_width, target_height = self.page_size_handler.adjust_dimensions_for_orientation(
                 target_width, target_height, pdf_width, pdf_height)
-        
-        # 绘制页面
+
+        # 绘制页面（打印时使用 300 DPI 高精度渲染）
         total_pages = self.pdf_handler.get_page_count()
         pages_per_sheet = self.layout_handler.pages_per_sheet
         total_layout_pages = (total_pages + pages_per_sheet - 1) // pages_per_sheet
-        
+
         for layout_page_index in range(total_layout_pages):
             if layout_page_index > 0:
                 printer.newPage()
-            
+
             start_pdf_page = layout_page_index * pages_per_sheet
             remaining_pages = total_pages - start_pdf_page
             page_count = min(pages_per_sheet, remaining_pages)
-            
-            # 绘制页面（使用缩放）
+
+            # 绘制页面（打印时使用 300 DPI）
             self.layout_handler.draw_adaptive_pages(
                 painter, self.pdf_handler, self.scaling_handler,
-                target_width, target_height, start_pdf_page, page_count)
-        
+                target_width, target_height, start_pdf_page, page_count, dpi=300)
+
         painter.end()
 
     def _direct_print(self):
@@ -424,10 +424,10 @@ class PDFPrinterApp(UIHandler):
                 remaining_pages = total_pages - start_pdf_page
                 page_count = min(pages_per_sheet, remaining_pages)
 
-                # 打印时使用缩放
+                # 打印时使用 300 DPI 高精度渲染
                 self.layout_handler.draw_adaptive_pages(
-                    pixmap_painter, self.pdf_handler, self.scaling_handler, 
-                    target_width, target_height, start_pdf_page, page_count)
+                    pixmap_painter, self.pdf_handler, self.scaling_handler,
+                    target_width, target_height, start_pdf_page, page_count, dpi=300)
 
                 pixmap_painter.end()
 
