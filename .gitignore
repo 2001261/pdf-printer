@@ -16,9 +16,6 @@
 !*.sh
 !*.bat
 
-# Allow spec files
-!*.spec
-
 # Allow directories that contain allowed files
 !*/
 
