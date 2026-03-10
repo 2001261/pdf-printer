@@ -7,6 +7,9 @@ from PyQt5.QtCore import Qt, QSize, QTimer
 from PyQt5.QtGui import QPainter, QPageLayout, QPixmap
 from PyQt5.QtPrintSupport import QPrinter, QPrintDialog, QPrintPreviewDialog
 
+# 版本号
+__version__ = "v2.1.0"
+
 # 导入我们新创建的模块
 from pdf_handler import PDFHandler
 from scaling_handler import ScalingHandler

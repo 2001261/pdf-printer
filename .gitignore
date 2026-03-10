@@ -16,6 +16,9 @@
 !*.sh
 !*.bat
 
+# Allow spec files (PyInstaller build configuration)
+!*.spec
+
 # Allow directories that contain allowed files
 !*/
 

@@ -16,7 +16,7 @@ class UIHandler(QMainWindow):
         
     def init_ui(self):
         # 设置窗口属性
-        self.setWindowTitle("PDF Printer v2.0")
+        self.setWindowTitle("PDF Printer v2.1.0")
         self.setGeometry(100, 100, 1200, 800)
         
         # 初始化所有控件
