@@ -56,6 +56,7 @@ class PDFPrinterApp(UIHandler):
         self.rotate_combo.currentIndexChanged.connect(self.rotate_changed)
         self.size_combo.currentIndexChanged.connect(self.size_changed)
         self.adaptive_checkbox.stateChanged.connect(self.adaptive_mode_changed)
+        self.auto_layout_checkbox.stateChanged.connect(self.auto_layout_changed)
         self.orientation_combo.currentIndexChanged.connect(self.orientation_changed)
         self.pages_per_sheet_combo.currentIndexChanged.connect(self.pages_per_sheet_changed)
         self.prev_button.clicked.connect(self.prev_page)
@@ -246,6 +247,14 @@ class PDFPrinterApp(UIHandler):
         else:
             self.display_refresher.refresh_display(self.current_page, 1.0)
         # 更新页面信息
+        self.update_page_info()
+
+    def auto_layout_changed(self, state):
+        self.layout_handler.set_auto_swap_by_source_orientation(state == Qt.Checked)
+        if self.fit_to_window_active:
+            self._calculate_and_apply_fit_to_window_scale()
+        else:
+            self.display_refresher.refresh_display(self.current_page, 1.0)
         self.update_page_info()
     
     def pages_per_sheet_changed(self, index):

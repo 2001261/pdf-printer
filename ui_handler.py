@@ -75,6 +75,8 @@ class UIHandler(QMainWindow):
         
         self.adaptive_checkbox = QCheckBox("自适应模式")
         self.adaptive_checkbox.setChecked(True)  # 默认勾选自适应模式
+        self.auto_layout_checkbox = QCheckBox("横向源页自动改纵排")
+        self.auto_layout_checkbox.setChecked(True)
         
         self.prev_button = QPushButton("上一页")
         self.prev_button.setEnabled(False)
@@ -211,9 +213,15 @@ class UIHandler(QMainWindow):
         page_row2.addWidget(self.pages_per_sheet_combo)
         page_row2.addWidget(self.adaptive_checkbox)
         page_row2.addStretch()  # 添加弹性空间
-        
+
+        # 第三行：自动布局切换
+        page_row3 = QHBoxLayout()
+        page_row3.addWidget(self.auto_layout_checkbox)
+        page_row3.addStretch()
+
         page_layout.addLayout(page_row1)
         page_layout.addLayout(page_row2)
+        page_layout.addLayout(page_row3)
         
         # 添加到控制布局
         control_layout.addWidget(file_group)
